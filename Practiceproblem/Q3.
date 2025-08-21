@@ -1,0 +1,46 @@
+public class StringArrays {
+public static String findLongestName(String[] names) {
+String longest = &quot;&quot;;
+for (String name : names) {
+if (name.length() &gt; longest.length()) {
+longest = name;
+}
+}
+return longest;
+}
+public static int countNamesStartingWith(String[] names, char letter) {
+int count = 0;
+letter = Character.toLowerCase(letter);
+for (String name : names) {
+if (Character.toLowerCase(name.charAt(0)) == letter) {
+count++;
+}
+}
+return count;
+}
+public static String[] formatNames(String[] names) {
+String[] formatted = new String[names.length];
+for (int i = 0; i &lt; names.length; i++) {
+String[] parts = names[i].split(&quot; &quot;);
+
+if (parts.length == 2) {
+formatted[i] = parts[1] + &quot;, &quot; + parts[0];
+} else {
+formatted[i] = names[i];
+}
+}
+return formatted;
+}
+public static void main(String[] args) {
+String[] students = {&quot;John Smith&quot;, &quot;Alice Johnson&quot;, &quot;Bob Brown&quot;, &quot;Carol
+Davis&quot;, &quot;David Wilson&quot;};
+System.out.println(&quot;Longest Name: &quot; + findLongestName(students));
+System.out.println(&quot;Names starting with &#39;A&#39;: &quot; +
+countNamesStartingWith(students, &#39;A&#39;));
+String[] formatted = formatNames(students);
+System.out.println(&quot;Formatted Names:&quot;);
+for (String name : formatted) {
+System.out.println(name);
+}
+}
+}
