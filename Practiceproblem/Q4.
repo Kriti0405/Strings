@@ -1,0 +1,82 @@
+import java.util.*;
+
+public class TextProcessor {
+public static String cleanInput(String input) {
+input = input.trim().replaceAll(&quot;\\s+&quot;, &quot; &quot;);
+String[] words = input.split(&quot; &quot;);
+StringBuilder sb = new StringBuilder();
+for (String word : words) {
+if (word.length() &gt; 0) {
+sb.append(Character.toUpperCase(word.charAt(0)))
+.append(word.substring(1).toLowerCase())
+.append(&quot; &quot;);
+}
+}
+return sb.toString().trim();
+}
+public static void analyzeText(String text) {
+String[] words = text.split(&quot;\\s+&quot;);
+int wordCount = words.length;
+int sentenceCount = text.split(&quot;[.!?]&quot;).length;
+int charCount = text.replace(&quot; &quot;, &quot;&quot;).length();
+String longestWord = &quot;&quot;;
+Map&lt;Character, Integer&gt; charFreq = new HashMap&lt;&gt;();
+for (String word : words) {
+if (word.length() &gt; longestWord.length()) {
+longestWord = word;
+}
+for (char c : word.toCharArray()) {
+c = Character.toLowerCase(c);
+charFreq.put(c, charFreq.getOrDefault(c, 0) + 1);
+}
+}
+char mostCommonChar = &#39; &#39;;
+int maxFreq = 0;
+for (Map.Entry&lt;Character, Integer&gt; entry : charFreq.entrySet()) {
+if (entry.getValue() &gt; maxFreq) {
+maxFreq = entry.getValue();
+mostCommonChar = entry.getKey();
+}
+}
+System.out.println(&quot;Words: &quot; + wordCount);
+System.out.println(&quot;Sentences: &quot; + sentenceCount);
+System.out.println(&quot;Characters (no spaces): &quot; + charCount);
+System.out.println(&quot;Longest word: &quot; + longestWord);
+System.out.println(&quot;Most common character: &quot; + mostCommonChar);
+}
+public static String[] getWordsSorted(String text) {
+
+text = text.replaceAll(&quot;[^a-zA-Z ]&quot;, &quot;&quot;);
+String[] words = text.split(&quot;\\s+&quot;);
+Arrays.sort(words, String.CASE_INSENSITIVE_ORDER);
+return words;
+}
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.println(&quot;=== TEXT PROCESSOR ===&quot;);
+System.out.print(&quot;Enter a paragraph: &quot;);
+String paragraph = scanner.nextLine();
+paragraph = cleanInput(paragraph);
+analyzeText(paragraph);
+String[] sortedWords = getWordsSorted(paragraph);
+System.out.println(&quot;\nWords in alphabetical order:&quot;);
+for (String word : sortedWords) {
+System.out.println(word);
+}
+System.out.print(&quot;\nSearch for a word: &quot;);
+String search = scanner.nextLine();
+boolean found = false;
+for (String word : sortedWords) {
+if (word.equalsIgnoreCase(search)) {
+found = true;
+break;
+}
+}
+if (found) {
+System.out.println(&quot;Word found!&quot;);
+} else {
+System.out.println(&quot;Word not found.&quot;);
+}
+scanner.close();
+}
+}
