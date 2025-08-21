@@ -1,0 +1,19 @@
+public static void main(String[] args) {
+String str1 = &quot;Java Programming&quot;;
+String str2 = new String(&quot;Java Programming&quot;);
+char[] charArray = {&#39;J&#39;, &#39;a&#39;, &#39;v&#39;, &#39;a&#39;, &#39; &#39;, &#39;P&#39;, &#39;r&#39;, &#39;o&#39;, &#39;g&#39;, &#39;r&#39;, &#39;a&#39;, &#39;m&#39;, &#39;m&#39;, &#39;i&#39;, &#39;n&#39;, &#39;g&#39;};
+String str3 = new String(charArray);
+System.out.println(&quot;String 1: &quot; + str1);
+System.out.println(&quot;String 2: &quot; + str2);
+System.out.println(&quot;String 3: &quot; + str3);
+System.out.println(&quot;\nComparisons using &#39;==&#39;:&quot;);
+System.out.println(&quot;str1 == str2: &quot; + (str1 == str2));
+System.out.println(&quot;str1 == str3: &quot; + (str1 == str3));
+System.out.println(&quot;\nComparisons using &#39;.equals()&#39;:&quot;);
+System.out.println(&quot;str1.equals(str2): &quot; + str1.equals(str2));
+System.out.println(&quot;str1.equals(str3): &quot; + str1.equals(str3));
+String quote = &quot;Programming Quote:\n\&quot;Code is poetry\&quot; -
+Unknown\nPath: C:\\Java\\Projects&quot;;
+System.out.println(&quot;\n&quot; + quote);
+}
+}
