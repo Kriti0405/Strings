@@ -1,0 +1,26 @@
+import java.util.Scanner;
+public class StringMethods {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print(&quot;Enter your full name (first and last): &quot;);
+String fullName = scanner.nextLine();
+System.out.print(&quot;Enter your favorite programming language: &quot;);
+String favLang = scanner.nextLine();
+System.out.print(&quot;Enter a sentence about your programming experience:
+&quot;);
+String sentence = scanner.nextLine();
+String[] nameParts = fullName.split(&quot; &quot;);
+String firstName = nameParts[0];
+String lastName = nameParts.length &gt; 1 ? nameParts[1] : &quot;&quot;;
+int charCount = sentence.replace(&quot; &quot;, &quot;&quot;).length();
+String langUpper = favLang.toUpperCase();
+System.out.println(&quot;\n--- Summary ---&quot;);
+System.out.println(&quot;First Name: &quot; + firstName);
+System.out.println(&quot;Last Name: &quot; + lastName);
+System.out.println(&quot;Programming Language (uppercase): &quot; + langUpper);
+System.out.println(&quot;Character count in sentence (no spaces): &quot; +
+charCount);
+
+scanner.close();
+}
+}
